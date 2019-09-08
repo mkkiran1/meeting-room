@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto update(String id, UserDto userDto) {
         UserDto toUpdate = findById(id);
-        // set values from userDto
+        userMapper.copy(userDto, toUpdate);
         userRepository.save(userMapper.fromDto(toUpdate));
         return toUpdate;
     }

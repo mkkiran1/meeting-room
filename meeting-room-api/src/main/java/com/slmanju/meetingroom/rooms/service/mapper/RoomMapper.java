@@ -23,6 +23,10 @@ public final class RoomMapper {
         return model;
     }
 
+    public void copy(RoomDto from, RoomDto to) {
+        BeanUtils.copyProperties(from, to);
+    }
+
     public List<RoomDto> toDtos(List<Room> models) {
         return models.stream().map(this::toDto).collect(Collectors.toList());
     }

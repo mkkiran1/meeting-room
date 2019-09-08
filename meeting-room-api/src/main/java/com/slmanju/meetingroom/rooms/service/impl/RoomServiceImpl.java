@@ -45,7 +45,7 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public RoomDto update(String id, RoomDto roomDto) {
         RoomDto toUpdate = findById(id);
-        // set values from roomDto
+        roomMapper.copy(roomDto, toUpdate);
         roomRepository.save(roomMapper.fromDto(toUpdate));
         return toUpdate;
     }

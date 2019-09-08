@@ -24,6 +24,10 @@ public final class UserMapper {
         return model;
     }
 
+    public void copy(UserDto from, UserDto to) {
+        BeanUtils.copyProperties(from, to);
+    }
+
     public List<UserDto> toDtos(List<User> models) {
         return models.stream().map(this::toDto).collect(toList());
     }
