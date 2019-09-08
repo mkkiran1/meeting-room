@@ -3,10 +3,13 @@ package com.slmanju.meetingroom.users.service.mapper;
 import com.slmanju.meetingroom.users.domain.model.User;
 import com.slmanju.meetingroom.users.service.dto.UserDto;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
+@Component
 public final class UserMapper {
 
     public UserDto toDto(User model) {
@@ -22,7 +25,7 @@ public final class UserMapper {
     }
 
     public List<UserDto> toDtos(List<User> models) {
-        return models.stream().map(this::toDto).collect(Collectors.toList());
+        return models.stream().map(this::toDto).collect(toList());
     }
 
 }

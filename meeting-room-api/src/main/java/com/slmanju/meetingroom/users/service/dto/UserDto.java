@@ -1,13 +1,10 @@
 package com.slmanju.meetingroom.users.service.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
-@Data
-public class UserDto implements Serializable {
-
-	private static final long serialVersionUID = 1;
+@Data @NoArgsConstructor
+public class UserDto {
 
     private String id;
 

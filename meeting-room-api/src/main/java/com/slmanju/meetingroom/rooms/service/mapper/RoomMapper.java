@@ -3,10 +3,12 @@ package com.slmanju.meetingroom.rooms.service.mapper;
 import com.slmanju.meetingroom.rooms.domain.model.Room;
 import com.slmanju.meetingroom.rooms.service.dto.RoomDto;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public final class RoomMapper {
 
     public RoomDto toDto(Room model) {
