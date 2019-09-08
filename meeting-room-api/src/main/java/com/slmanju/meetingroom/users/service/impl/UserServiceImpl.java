@@ -1,5 +1,6 @@
 package com.slmanju.meetingroom.users.service.impl;
 
+import com.slmanju.meetingroom.core.exception.ResourceNotFoundException;
 import com.slmanju.meetingroom.users.domain.model.User;
 import com.slmanju.meetingroom.users.domain.repository.UserRepository;
 import com.slmanju.meetingroom.users.service.UserService;
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto findById(String id) {
         Optional<User> user = userRepository.findById(id);
-        return user.map(userMapper::toDto).orElseThrow(() -> new RuntimeException("User not found"));
+        return user.map(userMapper::toDto).orElseThrow(() -> new ResourceNotFoundException(id, "User not found"));
     }
 
     @Override

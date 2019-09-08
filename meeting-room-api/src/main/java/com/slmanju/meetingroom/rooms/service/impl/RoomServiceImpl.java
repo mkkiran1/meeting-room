@@ -3,6 +3,7 @@ package com.slmanju.meetingroom.rooms.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import com.slmanju.meetingroom.core.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,7 +34,7 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public RoomDto findById(String id) {
         Optional<Room> room = roomRepository.findById(id);
-        return room.map(roomMapper::toDto).orElseThrow(() -> new RuntimeException("Room not found"));
+        return room.map(roomMapper::toDto).orElseThrow(() -> new ResourceNotFoundException(id, "Room not found"));
     }
 
     @Override
