@@ -1,4 +1,4 @@
-package com.slmanju.meetingroom.bookings.domain.model;
+package com.slmanju.meetingroom.meetings.domain.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,8 +13,8 @@ import java.io.Serializable;
 
 @Data @NoArgsConstructor
 @Entity
-@Table(name = "bookings")
-public class Booking implements Serializable {
+@Table(name = "meetings")
+public class Meeting implements Serializable {
 
 	private static final long serialVersionUID = 1;
 
@@ -23,8 +23,14 @@ public class Booking implements Serializable {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
-    @Column(name = "book_date")
-    private String bookDate;
+    @Column(name = "subject")
+    private String subject;
+
+    @Column(name = "notes")
+    private String notes;
+
+    @Column(name = "meeting_date")
+    private String meetingDate;
 
     @Column(name = "start_time")
     private String startTime;

@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS rooms;
+DROP TABLE IF EXISTS meetings;
 
 CREATE TABLE users (
   id VARCHAR(60)  PRIMARY KEY,
@@ -21,3 +22,12 @@ INSERT INTO rooms (id, room_name) VALUES
   ('1', 'Room 1'),
   ('2', 'Room 2'),
   ('3', 'Room 3');
+
+CREATE TABLE meetings (
+  id VARCHAR(60)  PRIMARY KEY,
+  subject VARCHAR(250) NOT NULL,
+  notes VARCHAR(250),
+  meeting_date VARCHAR(250) NOT NULL,
+  start_time VARCHAR(250) NOT NULL,
+  end_time VARCHAR(250) NOT NULL
+);
