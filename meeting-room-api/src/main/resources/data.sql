@@ -29,5 +29,11 @@ CREATE TABLE meetings (
   notes VARCHAR(250),
   meeting_date VARCHAR(250) NOT NULL,
   start_time VARCHAR(250) NOT NULL,
-  end_time VARCHAR(250) NOT NULL
+  end_time VARCHAR(250) NOT NULL,
+  room_id VARCHAR(60) NOT NULL
 );
+
+INSERT INTO meetings (id, subject, notes, meeting_date, start_time, end_time, room_id) VALUES
+  ('1', 'Meeting 1', 'Meeting note 1', '2019-09-20', '10:00', '11:00', '1'),
+  ('2', 'Meeting 2', 'Meeting note 2', '2019-09-20', '12:00', '13:00', '1'),
+  ('3', 'Meeting 3', 'Meeting note 3', '2019-09-20', '14:00', '15:00', '2');

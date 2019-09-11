@@ -1,13 +1,17 @@
 package com.slmanju.meetingroom.meetings.domain.model;
 
+import com.slmanju.meetingroom.rooms.domain.model.Room;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 
@@ -37,5 +41,9 @@ public class Meeting implements Serializable {
 
     @Column(name = "end_time")
     private String endTime;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_id")
+    private Room room;
 
 }

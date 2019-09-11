@@ -26,7 +26,8 @@ public class MeetingServiceImpl implements MeetingService {
 
     @Override
     public MeetingDto save(MeetingDto meetingDto) {
-        Meeting meeting = meetingRepository.save(meetingMapper.fromDto(meetingDto));
+        Meeting entity = meetingMapper.fromDto(meetingDto);
+        Meeting meeting = meetingRepository.save(entity);
         return meetingMapper.toDto(meeting);
     }
 
