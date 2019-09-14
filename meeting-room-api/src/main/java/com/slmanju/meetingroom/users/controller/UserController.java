@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -34,12 +35,12 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDto save(@RequestBody UserDto userDto) {
+    public UserDto save(@Valid @RequestBody UserDto userDto) {
         return userService.save(userDto);
     }
 
     @PutMapping("/{id}")
-    public UserDto update(@PathVariable String id, @RequestBody UserDto userDto) {
+    public UserDto update(@PathVariable String id, @Valid @RequestBody UserDto userDto) {
         return userService.update(id, userDto);
     }
 
