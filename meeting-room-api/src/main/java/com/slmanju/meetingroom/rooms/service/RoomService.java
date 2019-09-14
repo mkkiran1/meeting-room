@@ -3,6 +3,8 @@ package com.slmanju.meetingroom.rooms.service;
 import java.util.List;
 
 import com.slmanju.meetingroom.rooms.service.dto.RoomDto;
+import com.slmanju.meetingroom.rooms.service.dto.RoomSearchRequest;
+import com.slmanju.meetingroom.rooms.service.dto.RoomSearchResult;
 
 public interface RoomService {
 
@@ -15,5 +17,7 @@ public interface RoomService {
     RoomDto update(String id, RoomDto dto);
 
     void deleteById(String id);
+
+    RoomSearchResult search(RoomSearchRequest searchRequest);
 
 }

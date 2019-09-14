@@ -2,6 +2,8 @@ package com.slmanju.meetingroom.rooms.controller;
 
 import com.slmanju.meetingroom.rooms.service.RoomService;
 import com.slmanju.meetingroom.rooms.service.dto.RoomDto;
+import com.slmanju.meetingroom.rooms.service.dto.RoomSearchRequest;
+import com.slmanju.meetingroom.rooms.service.dto.RoomSearchResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,6 +49,13 @@ public class RoomController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable String id) {
         roomService.deleteById(id);
+    }
+
+    @GetMapping("/search/{start}/{size}")
+    public RoomSearchResult search(@PathVariable int start, @PathVariable int size, RoomSearchRequest searchRequest) {
+        searchRequest.setStart(start);
+        searchRequest.setSize(size);
+        return roomService.search(searchRequest);
     }
 
 }

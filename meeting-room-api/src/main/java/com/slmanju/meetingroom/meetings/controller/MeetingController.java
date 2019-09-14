@@ -2,6 +2,8 @@ package com.slmanju.meetingroom.meetings.controller;
 
 import com.slmanju.meetingroom.meetings.service.MeetingService;
 import com.slmanju.meetingroom.meetings.service.dto.MeetingDto;
+import com.slmanju.meetingroom.meetings.service.dto.MeetingSearchRequest;
+import com.slmanju.meetingroom.meetings.service.dto.MeetingSearchResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,6 +49,13 @@ public class MeetingController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable String id) {
         meetingService.deleteById(id);
+    }
+
+    @GetMapping("/search/{start}/{size}")
+    public MeetingSearchResult search(@PathVariable int start, @PathVariable int size, MeetingSearchRequest searchRequest) {
+        searchRequest.setStart(start);
+        searchRequest.setSize(size);
+        return meetingService.search(searchRequest);
     }
 
 }

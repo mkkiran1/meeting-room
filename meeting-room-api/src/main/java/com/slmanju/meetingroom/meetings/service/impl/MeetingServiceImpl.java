@@ -5,7 +5,11 @@ import com.slmanju.meetingroom.meetings.domain.model.Meeting;
 import com.slmanju.meetingroom.meetings.domain.repository.MeetingRepository;
 import com.slmanju.meetingroom.meetings.service.MeetingService;
 import com.slmanju.meetingroom.meetings.service.dto.MeetingDto;
+import com.slmanju.meetingroom.meetings.service.dto.MeetingSearchRequest;
+import com.slmanju.meetingroom.meetings.service.dto.MeetingSearchResult;
 import com.slmanju.meetingroom.meetings.service.mapper.MeetingMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,6 +58,23 @@ public class MeetingServiceImpl implements MeetingService {
     @Override
     public void deleteById(String id) {
         meetingRepository.deleteById(id);
+    }
+
+    @Override
+    public MeetingSearchResult search(MeetingSearchRequest searchRequest) {
+        PageRequest pageRequest = PageRequest.of(searchRequest.getStart(), searchRequest.getSize());
+
+        Page<Meeting> page = meetingRepository.search(searchRequest, pageRequest);
+
+        MeetingSearchResult searchResult = new MeetingSearchResult();
+        searchResult.setContent(meetingMapper.toDtos(page.getContent()));
+        searchResult.setTotal(page.getTotalElements());
+        searchResult.setTotalPages(page.getTotalPages());
+        searchResult.setSize(page.getSize());
+        searchResult.setHasNext(page.hasNext());
+        searchResult.setHasPrevious(page.hasPrevious());
+
+        return searchResult;
     }
 
 }

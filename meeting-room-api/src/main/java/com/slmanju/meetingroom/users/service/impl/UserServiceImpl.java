@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserSearchResult search(UserSearchRequest searchRequest) {
-        Sort sort = Sort.by(Sort.Direction.ASC, "firstName");
+        Sort sort = Sort.by("firstName").ascending();
         PageRequest pageRequest = PageRequest.of(searchRequest.getStart(), searchRequest.getSize(), sort);
 
         Page<User> page = userRepository.search(searchRequest, pageRequest);

@@ -1,17 +1,20 @@
 package com.slmanju.meetingroom.rooms.service.impl;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.slmanju.meetingroom.core.exception.ResourceNotFoundException;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.slmanju.meetingroom.rooms.domain.model.Room;
 import com.slmanju.meetingroom.rooms.domain.repository.RoomRepository;
 import com.slmanju.meetingroom.rooms.service.RoomService;
 import com.slmanju.meetingroom.rooms.service.dto.RoomDto;
+import com.slmanju.meetingroom.rooms.service.dto.RoomSearchRequest;
+import com.slmanju.meetingroom.rooms.service.dto.RoomSearchResult;
 import com.slmanju.meetingroom.rooms.service.mapper.RoomMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Service
@@ -54,6 +57,23 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public void deleteById(String id) {
         roomRepository.deleteById(id);
+    }
+
+    @Override
+    public RoomSearchResult search(RoomSearchRequest searchRequest) {
+        PageRequest pageRequest = PageRequest.of(searchRequest.getStart(), searchRequest.getSize());
+
+        Page<Room> page = roomRepository.search(searchRequest, pageRequest);
+
+        RoomSearchResult searchResult = new RoomSearchResult();
+        searchResult.setContent(roomMapper.toDtos(page.getContent()));
+        searchResult.setTotal(page.getTotalElements());
+        searchResult.setTotalPages(page.getTotalPages());
+        searchResult.setSize(page.getSize());
+        searchResult.setHasNext(page.hasNext());
+        searchResult.setHasPrevious(page.hasPrevious());
+
+        return searchResult;
     }
 
 }
