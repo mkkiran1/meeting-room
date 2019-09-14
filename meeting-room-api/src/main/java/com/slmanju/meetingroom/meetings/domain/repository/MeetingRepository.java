@@ -12,11 +12,12 @@ import java.util.List;
 
 public interface MeetingRepository extends JpaRepository<Meeting, String> {
 
-    @Override
-    @Query("Select meeting From Meeting meeting LEFT JOIN fetch meeting.room")
-    List<Meeting> findAll();
+//    @Override
+//    @Query("Select meeting From Meeting meeting LEFT JOIN fetch meeting.room")
+//    List<Meeting> findAll();
 
-    @Query("Select meeting From Meeting meeting LEFT JOIN fetch meeting.room")
+    @Query("Select meeting From Meeting meeting")
+//    @Query("Select meeting From Meeting meeting LEFT JOIN fetch meeting.room")
     Page<Meeting> search(@Param("searchRequest") MeetingSearchRequest searchRequest, Pageable pageable);
 
 }
