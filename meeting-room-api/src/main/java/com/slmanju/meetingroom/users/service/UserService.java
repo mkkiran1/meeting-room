@@ -1,6 +1,8 @@
 package com.slmanju.meetingroom.users.service;
 
 import com.slmanju.meetingroom.users.service.dto.UserDto;
+import com.slmanju.meetingroom.users.service.dto.UserSearchRequest;
+import com.slmanju.meetingroom.users.service.dto.UserSearchResult;
 
 import java.util.List;
 
@@ -15,5 +17,7 @@ public interface UserService {
     UserDto update(String id, UserDto dto);
 
     void deleteById(String id);
+
+    UserSearchResult search(UserSearchRequest searchRequest);
 
 }
