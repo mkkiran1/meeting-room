@@ -21,4 +21,8 @@ public class UserDto {
     @Email(message = "Valid email is required")
     private String email;
 
+    private String username;
+
+    private String password;
+
 }
