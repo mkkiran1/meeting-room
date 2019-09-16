@@ -1,6 +1,7 @@
 package com.slmanju.meetingroom.users.controller;
 
 import com.slmanju.meetingroom.users.service.UserService;
+import com.slmanju.meetingroom.users.service.dto.RoleDto;
 import com.slmanju.meetingroom.users.service.dto.UserDto;
 import com.slmanju.meetingroom.users.service.dto.UserSearchRequest;
 import com.slmanju.meetingroom.users.service.dto.UserSearchResult;
@@ -57,6 +58,11 @@ public class UserController {
         searchRequest.setStart(start);
         searchRequest.setSize(size);
         return userService.search(searchRequest);
+    }
+
+    @PutMapping("/{id}/roles")
+    public List<RoleDto> addRoles(@PathVariable String id, @RequestBody List<String> roleIds) {
+        return userService.upsertRoles(id, roleIds);
     }
 
     @GetMapping("/populate")

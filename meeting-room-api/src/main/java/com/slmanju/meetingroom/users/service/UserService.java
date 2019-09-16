@@ -1,5 +1,6 @@
 package com.slmanju.meetingroom.users.service;
 
+import com.slmanju.meetingroom.users.service.dto.RoleDto;
 import com.slmanju.meetingroom.users.service.dto.UserDto;
 import com.slmanju.meetingroom.users.service.dto.UserSearchRequest;
 import com.slmanju.meetingroom.users.service.dto.UserSearchResult;
@@ -19,5 +20,7 @@ public interface UserService {
     void deleteById(String id);
 
     UserSearchResult search(UserSearchRequest searchRequest);
+
+    List<RoleDto> upsertRoles(String id, List<String> roleIds);
 
 }
