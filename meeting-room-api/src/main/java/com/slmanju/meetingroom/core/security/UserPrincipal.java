@@ -1,6 +1,6 @@
 package com.slmanju.meetingroom.core.security;
 
-import com.slmanju.meetingroom.users.service.dto.UserDto;
+import com.slmanju.meetingroom.core.users.service.dto.UserDto;
 import org.springframework.security.core.userdetails.User;
 
 import java.util.ArrayList;
