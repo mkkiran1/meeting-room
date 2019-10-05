@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * Globally catch exception and converts into meaningful status and objects.
+ *
  * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
  **/
 @RestControllerAdvice

@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 /**
+ * This class holds search results.
+ *
  * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
  **/
 @Data
@@ -28,6 +30,15 @@ public class SearchResult<T> {
 
     private boolean hasPrevious;
 
+    /**
+     * Create {@link SearchResult} using {@link Page} object.
+     *
+     * @param page {@link Page} object.
+     * @param dataMapper {@link DataMapper} to convert data.
+     * @param <T> Dto
+     * @param <S> Model
+     * @return {@link SearchResult} of {@link Page}
+     */
     public static <T, S> SearchResult<T> of(Page<S> page, DataMapper<S, T> dataMapper) {
         SearchResult<T> searchResult = new SearchResult<>();
         searchResult.setContent(dataMapper.toDtos(page.getContent()));

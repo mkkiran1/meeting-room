@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class holds error information.
+ *
  * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
  **/
 @Data

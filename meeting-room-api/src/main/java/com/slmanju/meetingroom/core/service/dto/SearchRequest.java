@@ -3,6 +3,8 @@ package com.slmanju.meetingroom.core.service.dto;
 import lombok.Data;
 
 /**
+ * This class holds search request dto.
+ *
  * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
  **/
 @Data
