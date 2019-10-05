@@ -3,6 +3,7 @@ package com.slmanju.meetingroom.core.service.mapper;
 import org.springframework.beans.BeanUtils;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import static java.util.stream.Collectors.toList;
 
@@ -14,9 +15,21 @@ import static java.util.stream.Collectors.toList;
  */
 public interface DataMapper<S, R> {
 
-    R toDto(S model);
+    default R toDto(S model) {
+        R dto = newDto().get();
+        BeanUtils.copyProperties(model, dto);
+        return dto;
+    }
 
-    S fromDto(R dto);
+    default S fromDto(R dto) {
+        S model = newModel().get();
+        BeanUtils.copyProperties(dto, model);
+        return model;
+    }
+
+    Supplier<S> newModel();
+
+    Supplier<R> newDto();
 
     default void copy(R from, R to) {
         BeanUtils.copyProperties(from, to);

@@ -10,6 +10,8 @@ import com.slmanju.meetingroom.rooms.service.mapper.RoomMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.function.Supplier;
+
 /**
  * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
  **/
@@ -46,6 +48,16 @@ public final class MeetingMapper implements DataMapper<Meeting, MeetingDto> {
         model.setRoom(roomMapper.fromDto(roomDto));
 
         return model;
+    }
+
+    @Override
+    public Supplier<Meeting> newModel() {
+        return Meeting::new;
+    }
+
+    @Override
+    public Supplier<MeetingDto> newDto() {
+        return MeetingDto::new;
     }
 
 }

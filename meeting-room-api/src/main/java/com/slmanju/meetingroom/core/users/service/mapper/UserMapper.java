@@ -3,8 +3,9 @@ package com.slmanju.meetingroom.core.users.service.mapper;
 import com.slmanju.meetingroom.core.service.mapper.DataMapper;
 import com.slmanju.meetingroom.core.users.domain.model.User;
 import com.slmanju.meetingroom.core.users.service.dto.UserDto;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
+
+import java.util.function.Supplier;
 
 /**
  * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
@@ -12,16 +13,14 @@ import org.springframework.stereotype.Component;
 @Component
 public final class UserMapper implements DataMapper<User, UserDto> {
 
-    public UserDto toDto(User model) {
-        UserDto dto = new UserDto();
-        BeanUtils.copyProperties(model, dto);
-        return dto;
+    @Override
+    public Supplier<User> newModel() {
+        return User::new;
     }
 
-    public User fromDto(UserDto dto) {
-        User model = new User();
-        BeanUtils.copyProperties(dto, model);
-        return model;
+    @Override
+    public Supplier<UserDto> newDto() {
+        return UserDto::new;
     }
 
 }
