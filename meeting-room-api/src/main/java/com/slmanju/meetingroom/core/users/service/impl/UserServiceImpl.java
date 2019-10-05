@@ -85,10 +85,7 @@ public class UserServiceImpl implements UserService {
 
         Page<User> page = userRepository.search(searchRequest, pageRequest);
 
-        SearchResult<UserDto> searchResult = SearchResult.of(page);
-        searchResult.setContent(userMapper.toDtos(page.getContent()));
-
-        return searchResult;
+        return SearchResult.of(page, userMapper);
     }
 
     @Override
