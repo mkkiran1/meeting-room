@@ -3,7 +3,6 @@ package com.slmanju.meetingroom.core.controller;
 import com.slmanju.meetingroom.core.exception.ResourceNotFoundException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
@@ -72,15 +71,12 @@ public final class ErrorAdvicer {
 
     @ExceptionHandler(value = { BadCredentialsException.class, AuthenticationException.class})
     public ErrorResponse handleUnauthorized(BadCredentialsException exception) {
-        return new ErrorResponse(HttpStatus.UNAUTHORIZED.value(), exception.getMessage());
+        return ErrorResponse.of(HttpStatus.UNAUTHORIZED.value(), exception.getMessage());
     }
 
     @ExceptionHandler(value = { AuthenticationException.class })
-    public ResponseEntity<Object> handleAuthenticationException(Exception ex, HttpServletRequest request) {
-        ErrorResponse response = new ErrorResponse();
-        response.setErrorCode(HttpStatus.BAD_REQUEST.value());
-        response.setErrorMessage(ex.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    public ErrorResponse handleAuthenticationException(Exception exception, HttpServletRequest request) {
+        return ErrorResponse.badRequest(exception.getMessage());
     }
 
     @ExceptionHandler(value = { Exception.class })
