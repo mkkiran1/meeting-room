@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Set;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 public interface RolePermissionRepository extends JpaRepository<RolePermission, String> {
 
     Set<RolePermission> findByRoleId(String roleId);

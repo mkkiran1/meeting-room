@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 @RestController
 @RequestMapping("/permissions")
 public class PermissionController {

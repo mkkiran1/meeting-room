@@ -5,6 +5,9 @@ import org.springframework.security.core.userdetails.User;
 
 import java.util.ArrayList;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 public class UserPrincipal extends User {
 
     private String id;

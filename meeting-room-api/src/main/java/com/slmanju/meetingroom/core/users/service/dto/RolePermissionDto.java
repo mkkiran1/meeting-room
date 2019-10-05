@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 @Data
 public class RolePermissionDto {
 

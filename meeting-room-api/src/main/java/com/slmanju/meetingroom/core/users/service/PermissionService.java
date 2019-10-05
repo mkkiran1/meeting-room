@@ -4,6 +4,9 @@ import com.slmanju.meetingroom.core.users.service.dto.PermissionDto;
 
 import java.util.List;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 public interface PermissionService {
 
     PermissionDto save(PermissionDto dto);

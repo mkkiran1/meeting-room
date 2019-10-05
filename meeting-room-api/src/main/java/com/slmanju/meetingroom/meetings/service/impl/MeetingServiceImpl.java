@@ -1,12 +1,12 @@
 package com.slmanju.meetingroom.meetings.service.impl;
 
 import com.slmanju.meetingroom.core.exception.ResourceNotFoundException;
+import com.slmanju.meetingroom.core.service.dto.SearchResult;
 import com.slmanju.meetingroom.meetings.domain.model.Meeting;
 import com.slmanju.meetingroom.meetings.domain.repository.MeetingRepository;
 import com.slmanju.meetingroom.meetings.service.MeetingService;
 import com.slmanju.meetingroom.meetings.service.dto.MeetingDto;
 import com.slmanju.meetingroom.meetings.service.dto.MeetingSearchRequest;
-import com.slmanju.meetingroom.meetings.service.dto.MeetingSearchResult;
 import com.slmanju.meetingroom.meetings.service.mapper.MeetingMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 @Transactional
 @Service
 public class MeetingServiceImpl implements MeetingService {
@@ -61,20 +64,12 @@ public class MeetingServiceImpl implements MeetingService {
     }
 
     @Override
-    public MeetingSearchResult search(MeetingSearchRequest searchRequest) {
+    public SearchResult<MeetingDto> search(MeetingSearchRequest searchRequest) {
         PageRequest pageRequest = PageRequest.of(searchRequest.getStart(), searchRequest.getSize());
 
         Page<Meeting> page = meetingRepository.search(searchRequest, pageRequest);
 
-        MeetingSearchResult searchResult = new MeetingSearchResult();
-        searchResult.setContent(meetingMapper.toDtos(page.getContent()));
-        searchResult.setTotal(page.getTotalElements());
-        searchResult.setTotalPages(page.getTotalPages());
-        searchResult.setSize(page.getSize());
-        searchResult.setHasNext(page.hasNext());
-        searchResult.setHasPrevious(page.hasPrevious());
-
-        return searchResult;
+        return SearchResult.of(page, meetingMapper);
     }
 
 }

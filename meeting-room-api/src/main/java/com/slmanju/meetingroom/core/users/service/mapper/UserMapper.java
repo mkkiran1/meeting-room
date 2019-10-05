@@ -6,6 +6,9 @@ import com.slmanju.meetingroom.core.users.service.dto.UserDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 @Component
 public final class UserMapper implements DataMapper<User, UserDto> {
 

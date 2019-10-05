@@ -25,6 +25,9 @@ import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 @Transactional
 @Service
 public class UserServiceImpl implements UserService {

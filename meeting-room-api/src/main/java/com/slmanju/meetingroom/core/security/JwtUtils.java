@@ -13,6 +13,9 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 public final class JwtUtils {
 
     private static final long EXPIRATION_TIME = 86400; // validity 1 day in seconds

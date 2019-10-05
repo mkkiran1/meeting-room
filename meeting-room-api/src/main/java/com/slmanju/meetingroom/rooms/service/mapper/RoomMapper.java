@@ -1,15 +1,16 @@
 package com.slmanju.meetingroom.rooms.service.mapper;
 
+import com.slmanju.meetingroom.core.service.mapper.DataMapper;
 import com.slmanju.meetingroom.rooms.domain.model.Room;
 import com.slmanju.meetingroom.rooms.service.dto.RoomDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 @Component
-public final class RoomMapper {
+public final class RoomMapper implements DataMapper<Room, RoomDto> {
 
     public RoomDto toDto(Room model) {
         RoomDto dto = new RoomDto();
@@ -21,14 +22,6 @@ public final class RoomMapper {
         Room model = new Room();
         BeanUtils.copyProperties(dto, model);
         return model;
-    }
-
-    public void copy(RoomDto from, RoomDto to) {
-        BeanUtils.copyProperties(from, to);
-    }
-
-    public List<RoomDto> toDtos(List<Room> models) {
-        return models.stream().map(this::toDto).collect(Collectors.toList());
     }
 
 }

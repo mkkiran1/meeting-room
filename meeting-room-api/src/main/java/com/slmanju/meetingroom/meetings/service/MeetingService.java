@@ -1,11 +1,14 @@
 package com.slmanju.meetingroom.meetings.service;
 
+import com.slmanju.meetingroom.core.service.dto.SearchResult;
 import com.slmanju.meetingroom.meetings.service.dto.MeetingDto;
 import com.slmanju.meetingroom.meetings.service.dto.MeetingSearchRequest;
-import com.slmanju.meetingroom.meetings.service.dto.MeetingSearchResult;
 
 import java.util.List;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 public interface MeetingService {
 
     MeetingDto save(MeetingDto dto);
@@ -18,6 +21,6 @@ public interface MeetingService {
 
     void deleteById(String id);
 
-    MeetingSearchResult search(MeetingSearchRequest searchRequest);
+    SearchResult<MeetingDto> search(MeetingSearchRequest searchRequest);
 
 }

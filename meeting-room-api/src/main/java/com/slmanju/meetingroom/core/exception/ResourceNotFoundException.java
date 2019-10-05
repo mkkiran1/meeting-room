@@ -1,5 +1,8 @@
 package com.slmanju.meetingroom.core.exception;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 public class ResourceNotFoundException extends RuntimeException {
 
     private String resourceId;

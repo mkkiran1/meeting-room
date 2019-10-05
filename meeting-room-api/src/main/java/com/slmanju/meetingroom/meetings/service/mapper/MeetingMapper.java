@@ -1,5 +1,6 @@
 package com.slmanju.meetingroom.meetings.service.mapper;
 
+import com.slmanju.meetingroom.core.service.mapper.DataMapper;
 import com.slmanju.meetingroom.meetings.domain.model.Meeting;
 import com.slmanju.meetingroom.meetings.service.dto.MeetingDto;
 import com.slmanju.meetingroom.rooms.domain.model.Room;
@@ -9,12 +10,11 @@ import com.slmanju.meetingroom.rooms.service.mapper.RoomMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
-import static java.util.stream.Collectors.toList;
-
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 @Component
-public final class MeetingMapper {
+public final class MeetingMapper implements DataMapper<Meeting, MeetingDto> {
 
     private final RoomService roomService;
     private final RoomMapper roomMapper;
@@ -46,14 +46,6 @@ public final class MeetingMapper {
         model.setRoom(roomMapper.fromDto(roomDto));
 
         return model;
-    }
-
-    public void copy(MeetingDto from, MeetingDto to) {
-        BeanUtils.copyProperties(from, to);
-    }
-
-    public List<MeetingDto> toDtos(List<Meeting> models) {
-        return models.stream().map(this::toDto).collect(toList());
     }
 
 }

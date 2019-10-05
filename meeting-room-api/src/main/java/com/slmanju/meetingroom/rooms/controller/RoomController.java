@@ -1,9 +1,9 @@
 package com.slmanju.meetingroom.rooms.controller;
 
+import com.slmanju.meetingroom.core.service.dto.SearchResult;
 import com.slmanju.meetingroom.rooms.service.RoomService;
 import com.slmanju.meetingroom.rooms.service.dto.RoomDto;
 import com.slmanju.meetingroom.rooms.service.dto.RoomSearchRequest;
-import com.slmanju.meetingroom.rooms.service.dto.RoomSearchResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 @RestController
 @RequestMapping("/rooms")
 public class RoomController {
@@ -52,7 +55,7 @@ public class RoomController {
     }
 
     @GetMapping("/search/{start}/{size}")
-    public RoomSearchResult search(@PathVariable int start, @PathVariable int size, RoomSearchRequest searchRequest) {
+    public SearchResult<RoomDto> search(@PathVariable int start, @PathVariable int size, RoomSearchRequest searchRequest) {
         searchRequest.setStart(start);
         searchRequest.setSize(size);
         return roomService.search(searchRequest);

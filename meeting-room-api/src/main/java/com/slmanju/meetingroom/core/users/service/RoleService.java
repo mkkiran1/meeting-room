@@ -5,6 +5,9 @@ import com.slmanju.meetingroom.core.users.service.dto.RoleDto;
 
 import java.util.List;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 public interface RoleService {
 
     RoleDto save(RoleDto dto);

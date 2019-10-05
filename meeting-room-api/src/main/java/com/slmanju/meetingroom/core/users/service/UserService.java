@@ -7,6 +7,9 @@ import com.slmanju.meetingroom.core.users.service.dto.UserSearchRequest;
 
 import java.util.List;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 public interface UserService {
 
     UserDto save(UserDto dto);

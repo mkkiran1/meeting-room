@@ -2,6 +2,9 @@ package com.slmanju.meetingroom.core.service.dto;
 
 import lombok.Data;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 @Data
 public class SearchRequest<T> {
 

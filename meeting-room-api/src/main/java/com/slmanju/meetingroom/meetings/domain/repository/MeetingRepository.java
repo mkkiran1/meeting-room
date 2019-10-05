@@ -10,6 +10,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 public interface MeetingRepository extends JpaRepository<Meeting, String> {
 
 //    @Override

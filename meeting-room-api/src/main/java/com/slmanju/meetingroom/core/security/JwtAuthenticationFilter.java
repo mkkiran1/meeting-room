@@ -18,7 +18,9 @@ import java.util.Optional;
 
 /**
  * Filter for other requests to check JWT in header
- * responsible for taking the token and re-identify the logged user from it
+ * responsible for taking the token and re-identify the logged user from it.
+ *
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
  */
 public class JwtAuthenticationFilter extends GenericFilterBean {
     

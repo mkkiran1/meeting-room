@@ -18,6 +18,9 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.IntStream;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 @RestController
 @RequestMapping("/users")
 public class UserController {

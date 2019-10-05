@@ -21,6 +21,9 @@ import java.util.Set;
 
 import static java.util.stream.Collectors.toList;
 
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 @Transactional
 @Service
 public class RoleServiceImpl implements RoleService {

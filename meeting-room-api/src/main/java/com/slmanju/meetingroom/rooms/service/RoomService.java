@@ -1,11 +1,14 @@
 package com.slmanju.meetingroom.rooms.service;
 
-import java.util.List;
-
+import com.slmanju.meetingroom.core.service.dto.SearchResult;
 import com.slmanju.meetingroom.rooms.service.dto.RoomDto;
 import com.slmanju.meetingroom.rooms.service.dto.RoomSearchRequest;
-import com.slmanju.meetingroom.rooms.service.dto.RoomSearchResult;
 
+import java.util.List;
+
+/**
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
+ **/
 public interface RoomService {
 
     RoomDto save(RoomDto dto);
@@ -18,6 +21,6 @@ public interface RoomService {
 
     void deleteById(String id);
 
-    RoomSearchResult search(RoomSearchRequest searchRequest);
+    SearchResult<RoomDto> search(RoomSearchRequest searchRequest);
 
 }

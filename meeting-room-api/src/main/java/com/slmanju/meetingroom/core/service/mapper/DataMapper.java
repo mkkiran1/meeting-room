@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.toList;
  * @param <S> Server model object
  * @param <R> Return dto object in rest api
  *
- * @author Manjula Jayawardana [manjulajayawardana@gmail.com]
+ * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
  */
 public interface DataMapper<S, R> {
 
