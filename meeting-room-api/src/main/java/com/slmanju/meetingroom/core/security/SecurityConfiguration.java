@@ -29,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
     @Autowired
-    private LoginService loginService;
+    private JwtTokenProvider jwtTokenProvider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -40,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .httpBasic().disable()
             .formLogin().disable()
             .logout().disable()
-            .addFilterBefore(new JwtAuthenticationFilter(loginService), UsernamePasswordAuthenticationFilter.class)
+            .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
             .authorizeRequests()
             .antMatchers(HttpMethod.POST, "/login").permitAll()
             .anyRequest().authenticated();

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +24,7 @@ import java.util.stream.Collectors;
  * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
  **/
 @RestControllerAdvice
-public final class ErrorAdvicer {
+public final class ExceptionController {
 
     @ExceptionHandler(value = { MethodArgumentTypeMismatchException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -72,11 +71,6 @@ public final class ErrorAdvicer {
     @ExceptionHandler(value = { BadCredentialsException.class, AuthenticationException.class})
     public ErrorResponse handleUnauthorized(BadCredentialsException exception) {
         return ErrorResponse.of(HttpStatus.UNAUTHORIZED.value(), exception.getMessage());
-    }
-
-    @ExceptionHandler(value = { AuthenticationException.class })
-    public ErrorResponse handleAuthenticationException(Exception exception, HttpServletRequest request) {
-        return ErrorResponse.badRequest(exception.getMessage());
     }
 
     @ExceptionHandler(value = { Exception.class })

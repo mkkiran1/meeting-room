@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Manjula Jayawardana <manjulajayawardana@gmail.com>
@@ -27,5 +29,7 @@ public class UserDto {
     private String username;
 
     private String password;
+
+    private List<String> roles = new ArrayList<>();
 
 }
