@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h3>All meetings</h3>
+<a th:href="@{/meetings}">Register meeting</a>
+<div>
+  <table>
+    <th>#</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Action</th>
+    <tr th:each="meeting : ${meetings}">
+      <td th:text="${meeting.id}"></td>
+      <td th:text="${meeting.title}"></td>
+      <td th:text="${meeting.description}"></td>
+      <td th:text="${meeting.meetingOn}"></td>
+      <td th:text="${meeting.startAt} + ' - ' + ${meeting.endAt}"></td>
+      <td>
+        <a th:href="@{'/meetings/' + ${meeting.id}}">View</a>
+        <a th:href="@{'/meetings/delete/' + ${meeting.id}}">Delete</a>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

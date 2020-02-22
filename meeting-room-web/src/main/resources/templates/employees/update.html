@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h3>Save employee</h3>
+<div>
+  <form th:action="@{/employees/update}" th:object="${employee}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" th:field="*{firstName}"/>
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" th:field="*{lastName}"/>
+    </div>
+    <div>
+      <label for="dateOfBirth">Date of Birth:</label>
+      <input type="text" th:field="*{dateOfBirth}"/>
+    </div>
+    <div th:with="employeeRole=${employee.role}">
+      <label for="roleId">Role:</label>
+      <select id="roleId" name="roleId">
+        <option th:each="role : ${roles}"
+                th:value="${role.id}"
+                th:text="${role.roleName}"
+                th:selected="${role.id} == ${employeeRole.id}">ROLE</option>
+      </select>
+    </div>
+    <div>
+      <input type="submit" value="Save"/>
+    </div>
+  </form>
+</div>
+</body>
+</html>

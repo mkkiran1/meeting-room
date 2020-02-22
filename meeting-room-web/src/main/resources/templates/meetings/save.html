@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h3>Save meeting</h3>
+<div>
+  <form th:action="@{/meetings}" th:object="${meeting}" method="post">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" th:field="*{title}"/>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <input type="text" th:field="*{description}"/>
+    </div>
+    <div>
+      <label for="meetingOn">Date:</label>
+      <input type="text" th:field="*{meetingOn}"/>
+    </div>
+    <div>
+      <label for="startAt">From:</label>
+      <input type="text" th:field="*{startAt}"/>
+    </div>
+    <div>
+      <label for="endAt">To:</label>
+      <input type="text" th:field="*{endAt}"/>
+    </div>
+    <div>
+      <label for="organizerId">Organizer:</label>
+      <input type="text" th:field="*{organizerId}"/>
+    </div>
+    <div>
+      <label for="roomId">Room:</label>
+      <select th:field="*{roomId}">
+        <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.roomName}">ROLE</option>
+      </select>
+    </div>
+    <div>
+      <input type="submit" value="Save"/>
+    </div>
+  </form>
+</div>
+</body>
+</html>

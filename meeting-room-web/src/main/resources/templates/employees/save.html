@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h3>Save employee</h3>
+<div>
+  <form th:action="@{/employees}" th:object="${employee}" method="post">
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" th:field="*{firstName}"/>
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" th:field="*{lastName}"/>
+    </div>
+    <div>
+      <label for="dateOfBirth">Date of Birth:</label>
+      <input type="text" th:field="*{dateOfBirth}"/>
+    </div>
+    <div>
+      <label for="role">Role:</label>
+      <select th:field="*{roleId}">
+        <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.roleName}">ROLE</option>
+      </select>
+    </div>
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" th:field="*{username}"/>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" th:field="*{password}"/>
+    </div>
+    <div>
+      <input type="submit" value="Save"/>
+    </div>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Room</title>
+</head>
+<body>
+    <h3>Save room</h3>
+    <div>
+        <form th:action="@{/rooms/update}" th:object="${room}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <input type="text" th:field="*{roomName}" />
+            <input type="submit" value="Update" />
+        </form>
+    </div>
+</body>
+</html>
